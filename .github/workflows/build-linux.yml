@@ -30,6 +30,8 @@ jobs:
           - 'gcc-12'
           - 'gcc-13'
       fail-fast: false
+    env:
+      BUILD_OPTS: ''
     steps:
       - name: Runtime environment
         shell: bash
@@ -107,7 +109,7 @@ jobs:
         # Codecov no longer parses gcov files automatically
         run: |
           rm -rf build
-          meson setup build --prefix=$HOME/.local -Db_coverage=true --buildtype=debug
+          meson setup build --prefix=$HOME/.local -Db_coverage=true --buildtype=debug $BUILD_OPTS
           meson compile -C build
           meson test -C build
           ninja -C build coverage-xml

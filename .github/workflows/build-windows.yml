@@ -29,6 +29,7 @@ jobs:
       CC: cl.exe
       CXX: cl.exe
       LD: link.exe
+      BUILD_OPTS: ''
     steps:
       - name: Runtime environment
         env:
